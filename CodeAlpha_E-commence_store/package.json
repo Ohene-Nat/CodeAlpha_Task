@@ -1,0 +1,33 @@
+{
+  "name": "ecommerce-web-app",
+  "version": "1.0.0",
+  "description": "Complete e-commerce web application with Express, PostgreSQL, and vanilla JavaScript frontend",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "lint": "node --check src/server.js",
+    "seed:admin": "node scripts/seed-admin.js"
+  },
+  "keywords": [
+    "ecommerce",
+    "express",
+    "postgresql",
+    "vanilla-javascript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
