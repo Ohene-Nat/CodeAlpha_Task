@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopSphere | All Products</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body data-page="products">
+  <header class="header glass-header">
+    <div class="container nav">
+      <a class="brand" href="index.html"><i data-lucide="shopping-bag"></i> ShopSphere</a>
+      <nav class="nav-links">
+        <a href="index.html"><i data-lucide="home"></i> Home</a>
+        <a href="products.html"><i data-lucide="store"></i> Products</a>
+        <a href="cart.html"><i data-lucide="shopping-cart"></i> Cart<span class="nav-cart-badge" id="navCartBadge" hidden>0</span></a>
+        <a href="dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+        <div class="nav-auth" id="navAuth"></div>
+      </nav>
+      <button class="menu-button" type="button"></button>
+    </div>
+  </header>
+
+  <main class="container page-shell">
+    <div class="page-head">
+      <div>
+        <h1 class="page-title">All products</h1>
+        <p class="page-copy">Search the full catalog, filter by category or price, and jump straight to any product.</p>
+      </div>
+    </div>
+
+    <section class="panel catalog-toolbar fade-in">
+      <form class="search-bar" id="catalogFilterForm">
+        <label class="field-group" for="catalogSearchInput">
+          <span class="field-label">Search</span>
+          <input id="catalogSearchInput" type="search" placeholder="Search products by name">
+        </label>
+        <label class="field-group" for="catalogCategoryFilter">
+          <span class="field-label">Category</span>
+          <select id="catalogCategoryFilter">
+            <option value="all">All Categories</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Home">Home</option>
+            <option value="Beauty">Beauty</option>
+            <option value="Sports">Sports</option>
+            <option value="Toys">Toys</option>
+            <option value="Books">Books</option>
+          </select>
+        </label>
+        <label class="field-group" for="catalogMinPrice">
+          <span class="field-label">Min price</span>
+          <input id="catalogMinPrice" type="number" min="0" placeholder="0">
+        </label>
+        <label class="field-group" for="catalogMaxPrice">
+          <span class="field-label">Max price</span>
+          <input id="catalogMaxPrice" type="number" min="0" placeholder="100000">
+        </label>
+        <button class="button button-primary search-submit" type="submit">Search</button>
+      </form>
+      <div class="chip-row">
+        <button class="chip active" type="button" data-category="all">All</button>
+        <button class="chip" type="button" data-category="Electronics">Electronics</button>
+        <button class="chip" type="button" data-category="Fashion">Fashion</button>
+        <button class="chip" type="button" data-category="Home">Home</button>
+        <button class="chip" type="button" data-category="Beauty">Beauty</button>
+        <button class="chip" type="button" data-category="Sports">Sports</button>
+        <button class="chip" type="button" data-category="Toys">Toys</button>
+        <button class="chip" type="button" data-category="Books">Books</button>
+      </div>
+    </section>
+
+    <div class="catalog-results-meta" id="catalogResultsMeta">Loading products&hellip;</div>
+    <section class="section" style="padding-top:0;">
+      <div id="catalogGrid" class="grid product-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">ShopSphere</a>
+          <p>A sharper way to shop online — curated collections, secure checkout, and fast delivery in one clean storefront.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="orders.html">My Orders</a></li>
+            <li class="footer-guest-link"><a href="login.html">Login</a></li>
+            <li class="footer-guest-link"><a href="register.html">Register</a></li>
+            <li class="footer-auth-link" id="footerLogoutLink" style="display:none;"><button type="button" id="footerLogoutButton" class="footer-link-button">Logout</button></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li><i data-lucide="mail"></i> support@shopsphere.com</li>
+            <li><i data-lucide="phone"></i> +1 (555) 010-2024</li>
+            <li><i data-lucide="map-pin"></i> Remote-first, worldwide</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <span>&copy; 2026 ShopSphere. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>

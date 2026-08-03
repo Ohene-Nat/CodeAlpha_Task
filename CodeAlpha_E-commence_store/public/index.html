@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopSphere | Home</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body data-page="home">
+  <header class="header glass-header">
+    <div class="container nav">
+      <a class="brand" href="index.html"><i data-lucide="shopping-bag"></i> ShopSphere</a>
+      <nav class="nav-links">
+        <a href="index.html"><i data-lucide="home"></i> Home</a>
+        <a href="products.html"><i data-lucide="store"></i> Products</a>
+        <a href="cart.html"><i data-lucide="shopping-cart"></i> Cart<span class="nav-cart-badge" id="navCartBadge" hidden>0</span></a>
+        <a href="dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+        <div class="nav-auth" id="navAuth"></div>
+      </nav>
+      <button class="menu-button" type="button"></button>
+    </div>
+  </header>
+
+  <main class="container page-shell">
+    <section class="hero">
+      <div class="hero-card fade-in">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="hero-label">Curated e-commerce experience</span>
+            <h1 class="hero-title">A sharper way to shop online.</h1>
+            <p class="hero-subtitle">
+              Browse curated collections, compare prices instantly, and move from discovery to checkout with a clean,
+              premium storefront experience.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#featuredGrid">Shop featured</a>
+              <a class="button button-secondary" href="dashboard.html">View dashboard</a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-card">
+                <span class="stat-value">60+</span>
+                <span class="stat-label">Curated products</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-value">4.9★</span>
+                <span class="stat-label">Average customer rating</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-value">24/7</span>
+                <span class="stat-label">Store access</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-panel" aria-label="Store highlights">
+            <div class="hero-panel-card">
+              <div class="hero-panel-header">
+                <h2>Why ShopSphere?</h2>
+                <p class="helper-text">Premium picks, secure checkout, and fast delivery.</p>
+              </div>
+              <div class="hero-showcase">
+                <div class="showcase-card">
+                  <strong><i data-lucide="sparkles"></i> Featured today</strong>
+                  <p>Premium picks with fast browsing, quick-add actions, and clear collection highlights.</p>
+                </div>
+                <div class="mini-grid">
+                  <div class="mini-card mini-card-blue">
+                    <span class="mini-value"><i data-lucide="star"></i></span>
+                    <span class="mini-label">Curated picks</span>
+                    <span class="mini-caption">Hand-selected products worth exploring first.</span>
+                  </div>
+                  <div class="mini-card mini-card-amber">
+                    <span class="mini-value"><i data-lucide="shield-check"></i></span>
+                    <span class="mini-label">Secure checkout</span>
+                    <span class="mini-caption">Protected checkout with order tracking.</span>
+                  </div>
+                  <div class="mini-card mini-card-teal">
+                    <span class="mini-value"><i data-lucide="truck"></i></span>
+                    <span class="mini-label">Fast delivery</span>
+                    <span class="mini-caption">Reliable shipping for a smoother experience.</span>
+                  </div>
+                </div>
+              </div>
+              <a class="button button-primary" href="products.html" style="margin-top:0.75rem; width:100%;"><i data-lucide="search"></i> Browse all products</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Shop by category</h2>
+          <p class="section-subtitle">Quick access to the most popular departments.</p>
+        </div>
+      </div>
+      <div class="chip-row">
+        <button class="chip" type="button" data-category="Electronics">Electronics</button>
+        <button class="chip" type="button" data-category="Fashion">Fashion</button>
+        <button class="chip" type="button" data-category="Home">Home</button>
+        <button class="chip" type="button" data-category="Beauty">Beauty</button>
+        <button class="chip" type="button" data-category="Sports">Sports</button>
+        <button class="chip" type="button" data-category="Toys">Toys</button>
+        <button class="chip" type="button" data-category="Books">Books</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Featured products</h2>
+          <p class="section-subtitle">Hand-picked items with strong ratings and high demand.</p>
+        </div>
+      </div>
+      <div id="featuredGrid" class="grid product-grid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Latest arrivals</h2>
+          <p class="section-subtitle">Fresh inventory with modern styling and fast shipping potential.</p>
+        </div>
+      </div>
+      <div id="latestGrid" class="grid product-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">ShopSphere</a>
+          <p>A sharper way to shop online — curated collections, secure checkout, and fast delivery in one clean storefront.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="orders.html">My Orders</a></li>
+            <li class="footer-guest-link"><a href="login.html">Login</a></li>
+            <li class="footer-guest-link"><a href="register.html">Register</a></li>
+            <li class="footer-auth-link" id="footerLogoutLink" style="display:none;"><button type="button" id="footerLogoutButton" class="footer-link-button">Logout</button></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li><i data-lucide="mail"></i> support@shopsphere.com</li>
+            <li><i data-lucide="phone"></i> +1 (555) 010-2024</li>
+            <li><i data-lucide="map-pin"></i> Remote-first, worldwide</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <span>&copy; 2026 ShopSphere. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>

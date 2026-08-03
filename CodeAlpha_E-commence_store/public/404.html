@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopSphere | Page Not Found</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body data-page="404">
+  <header class="header glass-header">
+    <div class="container nav">
+      <a class="brand" href="index.html"><i data-lucide="shopping-bag"></i> ShopSphere</a>
+      <nav class="nav-links">
+        <a href="index.html"><i data-lucide="home"></i> Home</a>
+        <a href="products.html"><i data-lucide="store"></i> Products</a>
+        <a href="cart.html"><i data-lucide="shopping-cart"></i> Cart<span class="nav-cart-badge" id="navCartBadge" hidden>0</span></a>
+        <a href="dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+        <div class="nav-auth" id="navAuth"></div>
+      </nav>
+      <button class="menu-button" type="button"></button>
+    </div>
+  </header>
+
+  <main class="container page-shell" style="min-height: 60vh; display: grid; place-items: center;">
+    <section class="auth-shell fade-in" style="max-width: 760px; width: 100%;">
+      <div class="auth-content">
+        <div class="auth-hero">
+          <span class="eyebrow">404 error</span>
+          <h1>We couldn't find that page.</h1>
+          <p>The page may have moved, been deleted, or the link may be incorrect.</p>
+        </div>
+        <div class="panel">
+          <h2 style="margin-top:0;">Return to the store</h2>
+          <p class="helper-text">Jump back to the homepage and keep browsing products.</p>
+          <a class="button button-primary" href="index.html" style="margin-top: 1rem;">Back to Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">ShopSphere</a>
+          <p>A sharper way to shop online — curated collections, secure checkout, and fast delivery in one clean storefront.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="orders.html">My Orders</a></li>
+            <li class="footer-guest-link"><a href="login.html">Login</a></li>
+            <li class="footer-guest-link"><a href="register.html">Register</a></li>
+            <li class="footer-auth-link" id="footerLogoutLink" style="display:none;"><button type="button" id="footerLogoutButton" class="footer-link-button">Logout</button></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li><i data-lucide="mail"></i> support@shopsphere.com</li>
+            <li><i data-lucide="phone"></i> +1 (555) 010-2024</li>
+            <li><i data-lucide="map-pin"></i> Remote-first, worldwide</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <span>&copy; 2026 ShopSphere. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
