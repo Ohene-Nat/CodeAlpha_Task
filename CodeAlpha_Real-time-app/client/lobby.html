@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signal — Lobby</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="lobby-shell">
+    <div class="lobby-card">
+      <div class="lobby-top">
+        <div class="brand-row" style="margin-bottom:0;">
+          <span class="brand-mark"></span>
+          <span class="brand-name">Signal</span>
+        </div>
+        <div class="user-chip">
+          <strong id="me-name">—</strong>
+          &nbsp;·&nbsp;
+          <button type="button" id="logout-btn" style="background:none;border:none;color:var(--text-dim);text-decoration:underline;font-size:12px;padding:0;">Sign out</button>
+        </div>
+      </div>
+
+      <div class="tab-row">
+        <button class="tab-btn active" id="tab-create">New room</button>
+        <button class="tab-btn" id="tab-join">Join room</button>
+      </div>
+
+      <div id="create-view">
+        <p class="lede" style="margin-top:-8px;">Start a new room and share the code with your team.</p>
+        <div class="room-code-preview" id="new-room-code">— — — — — —</div>
+        <button class="btn" id="start-room-btn">Start room</button>
+      </div>
+
+      <div id="join-view" class="hidden">
+        <div class="field">
+          <label for="join-code">Room code</label>
+          <input id="join-code" type="text" placeholder="e.g. FALCON-482" autocomplete="off" style="text-transform:uppercase;" />
+        </div>
+        <div id="join-error" class="form-error"></div>
+        <button class="btn" id="join-room-btn">Join room</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/lobby.js"></script>
+</body>
+</html>

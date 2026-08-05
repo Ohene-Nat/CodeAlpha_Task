@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signal — Room</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="room-shell">
+    <!-- Signature: the "on-air" slate bar -->
+    <header class="slate-bar">
+      <div class="slate-left">
+        <span class="slate-badge"><span class="on-air-dot"></span> ON AIR</span>
+        <span class="room-code-tag">ROOM <strong id="room-code-display" class="mono">—</strong></span>
+      </div>
+      <div class="slate-right">
+        <span id="participant-count">1 in room</span>
+        <button class="copy-link-btn" id="copy-link-btn">Copy invite link</button>
+      </div>
+    </header>
+
+    <div class="stage with-panel" id="stage">
+      <div class="video-grid" id="video-grid">
+        <!-- local + remote tiles injected by call.js -->
+      </div>
+
+      <aside class="side-panel" id="side-panel">
+        <div class="panel-tabs">
+          <button class="panel-tab active" data-panel="chat">Chat</button>
+          <button class="panel-tab" data-panel="files">Files</button>
+          <button class="panel-tab" data-panel="whiteboard">Whiteboard</button>
+        </div>
+
+        <div class="panel-body active" id="panel-chat">
+          <div class="chat-messages" id="chat-messages"></div>
+          <form class="chat-input-row" id="chat-form">
+            <input id="chat-input" type="text" placeholder="Message the room…" autocomplete="off" maxlength="2000" />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+
+        <div class="panel-body" id="panel-files">
+          <div class="files-panel">
+            <label class="file-drop" for="file-input">
+              Click to share a file<br />
+              <span style="opacity:0.7;">encrypted at rest · up to 50MB</span>
+            </label>
+            <input id="file-input" type="file" class="visually-hidden" />
+            <div id="file-list"></div>
+          </div>
+        </div>
+
+        <div class="panel-body" id="panel-whiteboard">
+          <div class="whiteboard-panel">
+            <div class="whiteboard-toolbar">
+              <input type="color" id="wb-color" value="#111318" title="Stroke color" />
+              <input type="range" id="wb-size" min="1" max="24" value="3" title="Stroke size" />
+              <button type="button" id="wb-eraser">Eraser</button>
+              <button type="button" id="wb-clear">Clear board</button>
+              <button type="button" id="wb-fullscreen">Expand</button>
+            </div>
+            <div class="whiteboard-canvas-wrap">
+              <canvas id="whiteboard-canvas"></canvas>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="control-dock">
+      <button class="dock-btn active" id="btn-mic" title="Mute/unmute microphone" aria-label="Toggle microphone">🎤</button>
+      <button class="dock-btn active" id="btn-cam" title="Turn camera on/off" aria-label="Toggle camera">🎥</button>
+      <button class="dock-btn" id="btn-screen" title="Share your screen" aria-label="Share screen">🖥️</button>
+      <div class="dock-divider"></div>
+      <button class="dock-btn" id="btn-panel-toggle" title="Show/hide side panel" aria-label="Toggle side panel">💬</button>
+      <div class="dock-divider"></div>
+      <button class="dock-btn leave" id="btn-leave" title="Leave the room" aria-label="Leave room">Leave</button>
+    </footer>
+  </div>
+
+  <template id="tile-template">
+    <div class="tile">
+      <video autoplay playsinline></video>
+      <div class="tile-label">
+        <span class="name-text"></span>
+        <span class="tile-mute-icon hidden">🔇</span>
+      </div>
+      <div class="level-meter">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </template>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/webrtc.js"></script>
+  <script src="js/whiteboard.js"></script>
+  <script src="js/call.js"></script>
+</body>
+</html>
