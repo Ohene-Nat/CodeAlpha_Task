@@ -1,0 +1,105 @@
+/* ============================================================
+   Vibe — BASE / RESET
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Aurora ambient background — the signature visual motif ---- */
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora-bg::before,
+.aurora-bg::after,
+.aurora-bg span {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+}
+.aurora-bg::before {
+  width: 42vw; height: 42vw;
+  top: -10%; left: -8%;
+  background: var(--bg-aurora-1);
+  animation: drift1 22s ease-in-out infinite alternate;
+}
+.aurora-bg::after {
+  width: 38vw; height: 38vw;
+  bottom: -12%; right: -10%;
+  background: var(--bg-aurora-3);
+  animation: drift2 26s ease-in-out infinite alternate;
+}
+.aurora-bg span {
+  width: 30vw; height: 30vw;
+  top: 35%; left: 55%;
+  background: var(--bg-aurora-2);
+  animation: drift3 19s ease-in-out infinite alternate;
+}
+@keyframes drift1 { from { transform: translate(0,0) scale(1);} to { transform: translate(6vw,8vw) scale(1.15);} }
+@keyframes drift2 { from { transform: translate(0,0) scale(1);} to { transform: translate(-6vw,-6vw) scale(1.1);} }
+@keyframes drift3 { from { transform: translate(0,0) scale(1);} to { transform: translate(-8vw,4vw) scale(0.9);} }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  margin: 0;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+button { font-family: inherit; cursor: pointer; }
+input, textarea, select { font-family: inherit; }
+img { max-width: 100%; display: block; }
+
+::selection { background: rgba(var(--primary-rgb), 0.35); }
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--primary-rgb), 0.35);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(var(--primary-rgb), 0.55); }
+
+/* ---- Focus visibility (accessibility) ---- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.hidden { display: none !important; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}

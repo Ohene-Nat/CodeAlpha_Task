@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibe — Connect. Share. Belong.</title>
+<meta name="description" content="Join Vibe, the modern social platform.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/auth.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div id="top-loader"></div>
+<div class="aurora-bg"><span></span></div>
+
+<main class="auth-page">
+  <div class="auth-wrap glass">
+
+    <!-- Showcase panel -->
+    <section class="auth-showcase">
+      <div class="auth-brand">
+        <span class="logo-mark"><i class="fa-solid fa-diagram-project"></i></span>
+        Vibe
+      </div>
+      <div class="auth-showcase-copy">
+        <h1>Where your circle<br>actually shows up.</h1>
+        <p>Share moments, follow the people you care about, and find your corner of the internet — with a feed that stays honestly yours.</p>
+      </div>
+      <div class="auth-showcase-stats">
+        <div><strong>128K+</strong><span>Active members</span></div>
+        <div><strong>2.4M</strong><span>Posts shared</span></div>
+        <div><strong>4.9<i class="fa-solid fa-star" style="font-size:.7em"></i></strong><span>Community rating</span></div>
+      </div>
+    </section>
+
+    <!-- Form panel -->
+    <section class="auth-form-panel">
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login" type="button">Log In</button>
+        <button class="auth-tab" data-tab="register" type="button">Sign Up</button>
+      </div>
+
+      <!-- LOGIN -->
+      <form id="login-form" class="auth-form active" novalidate>
+        <h2>Welcome back</h2>
+        <p class="auth-subtitle">Log in to catch up with your feed.</p>
+
+        <div class="field" id="login-identifier-field">
+          <label for="login-identifier">Email or Username</label>
+          <input type="text" id="login-identifier" class="input" placeholder="you@example.com" autocomplete="username" required>
+          <div class="field-error"></div>
+        </div>
+
+        <div class="field" id="login-password-field">
+          <label for="login-password">Password</label>
+          <div class="input-wrap">
+            <input type="password" id="login-password" class="input" placeholder="••••••••" autocomplete="current-password" required>
+            <button type="button" class="input-suffix-btn toggle-password" data-target="login-password"><i class="fa-solid fa-eye"></i></button>
+          </div>
+          <div class="field-error"></div>
+        </div>
+
+        <div class="remember-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="remember-me">
+            Remember me
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="login-submit-btn">
+          <span class="btn-label">Log In</span>
+        </button>
+
+        <p class="auth-footer-link">New to Vibe? <a href="#" data-switch-tab="register">Create an account</a></p>
+      </form>
+
+      <!-- REGISTER -->
+      <form id="register-form" class="auth-form" novalidate>
+        <h2>Create your account</h2>
+        <p class="auth-subtitle">It only takes a minute to join.</p>
+
+        <div class="auth-avatar-upload">
+          <div class="avatar-preview" id="reg-avatar-preview"><i class="fa-solid fa-camera"></i></div>
+          <div class="upload-copy">
+            <strong>Profile picture <span style="color:var(--text-tertiary); font-weight:400;">(optional)</span></strong>
+            <label for="reg-avatar-input" style="color:var(--primary-light); cursor:pointer; font-weight:600;">Choose an image</label>
+          </div>
+          <input type="file" id="reg-avatar-input" accept="image/*" class="hidden">
+        </div>
+
+        <div class="field" id="reg-fullname-field">
+          <label for="reg-fullname">Full Name</label>
+          <input type="text" id="reg-fullname" class="input" placeholder="Jane Doe" autocomplete="name" required>
+          <div class="field-error"></div>
+        </div>
+
+        <div class="row-2">
+          <div class="field" id="reg-username-field">
+            <label for="reg-username">Username</label>
+            <input type="text" id="reg-username" class="input" placeholder="janedoe" autocomplete="username" required>
+            <div class="field-error"></div>
+          </div>
+          <div class="field" id="reg-email-field">
+            <label for="reg-email">Email</label>
+            <input type="email" id="reg-email" class="input" placeholder="jane@example.com" autocomplete="email" required>
+            <div class="field-error"></div>
+          </div>
+        </div>
+
+        <div class="field" id="reg-password-field">
+          <label for="reg-password">Password</label>
+          <div class="input-wrap">
+            <input type="password" id="reg-password" class="input" placeholder="At least 8 characters" autocomplete="new-password" required>
+            <button type="button" class="input-suffix-btn toggle-password" data-target="reg-password"><i class="fa-solid fa-eye"></i></button>
+          </div>
+          <div class="password-strength"><div class="password-strength-bar" id="password-strength-bar"></div></div>
+          <div class="field-error"></div>
+        </div>
+
+        <div class="field" id="reg-confirm-field">
+          <label for="reg-confirm">Confirm Password</label>
+          <input type="password" id="reg-confirm" class="input" placeholder="Repeat your password" autocomplete="new-password" required>
+          <div class="field-error"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="register-submit-btn">
+          <span class="btn-label">Create Account</span>
+        </button>
+
+        <p class="auth-footer-link">Already have an account? <a href="#" data-switch-tab="login">Log in</a></p>
+      </form>
+    </section>
+  </div>
+</main>
+
+<div id="toast-stack"></div>
+
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibe</title>
+<meta name="description" content="Vibe — connect, share, belong.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div id="top-loader"></div>
+<div class="aurora-bg"><span></span></div>
+
+<!-- ================= TOPBAR ================= -->
+<header class="topbar glass">
+  <div style="display:flex; align-items:center; gap:14px;">
+    <button class="btn-icon hamburger-btn" id="hamburger-btn"><i class="fa-solid fa-bars"></i></button>
+    <a href="#/home" class="topbar-brand">
+      <span class="logo-mark"><i class="fa-solid fa-diagram-project"></i></span>
+      <span>Vibe</span>
+    </a>
+  </div>
+
+  <div class="topbar-search">
+    <i class="fa-solid fa-search"></i>
+    <input type="text" id="global-search-input" placeholder="Search people by name or username...">
+    <div class="topbar-search-results glass hidden" id="search-results-dropdown"></div>
+  </div>
+
+  <div class="topbar-actions">
+    <button class="btn-icon" id="theme-toggle-btn" title="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <div class="dropdown">
+      <button class="btn-icon" id="notif-bell-btn" title="Notifications">
+        <i class="fa-solid fa-bell"></i>
+        <span class="badge hidden" id="notif-badge-topbar">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+<!-- ================= APP SHELL ================= -->
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar glass" id="sidebar">
+    <nav class="nav-list">
+      <a href="#/home" class="nav-item" data-route="home"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="#/search" class="nav-item" data-route="search"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+      <a href="#/notifications" class="nav-item" data-route="notifications">
+        <i class="fa-solid fa-bell"></i> Notifications
+        <span class="badge hidden" id="notif-badge-sidebar">0</span>
+      </a>
+      <a href="#/bookmarks" class="nav-item" data-route="bookmarks"><i class="fa-solid fa-bookmark"></i> Bookmarks</a>
+      <a href="#" class="nav-item" data-route="profile" id="sidebar-profile-link"><i class="fa-solid fa-user"></i> Profile</a>
+      <a href="#/settings" class="nav-item" data-route="settings"><i class="fa-solid fa-gear"></i> Settings</a>
+    </nav>
+
+    <button class="btn btn-primary btn-block sidebar-post-btn" id="sidebar-post-btn">
+      <i class="fa-solid fa-pen"></i> New Post
+    </button>
+
+    <div class="sidebar-user-card" id="sidebar-user-card">
+      <div id="sidebar-user-avatar"></div>
+      <div class="name-block">
+        <strong id="sidebar-user-name">—</strong>
+        <span id="sidebar-user-username">—</span>
+      </div>
+      <div class="dropdown">
+        <button class="btn-icon" id="sidebar-more-btn"><i class="fa-solid fa-ellipsis"></i></button>
+        <div class="dropdown-menu glass hidden" id="sidebar-more-menu">
+          <button class="dropdown-item" id="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN VIEW -->
+  <main class="feed-col" id="main-view">
+    <!-- Views are rendered dynamically here by main.js -->
+    <div class="route-loader"><div class="spinner spinner-lg"></div></div>
+  </main>
+
+  <!-- RIGHT WIDGETS -->
+  <aside class="rightbar">
+    <div class="widget glass">
+      <h3><i class="fa-solid fa-hashtag"></i> Trending</h3>
+      <div id="trending-widget-content">
+        <div class="skeleton skeleton-line" style="width:70%"></div>
+        <div class="skeleton skeleton-line" style="width:50%"></div>
+        <div class="skeleton skeleton-line" style="width:60%"></div>
+      </div>
+    </div>
+    <div class="widget glass">
+      <h3><i class="fa-solid fa-user-plus"></i> Who to follow</h3>
+      <div id="suggestions-widget-content">
+        <div class="skeleton skeleton-line" style="width:80%"></div>
+        <div class="skeleton skeleton-line" style="width:60%"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- Mobile bottom tab bar -->
+<nav class="mobile-tabbar glass">
+  <a href="#/home" class="tab-btn" data-route="home"><i class="fa-solid fa-house"></i></a>
+  <a href="#/search" class="tab-btn" data-route="search"><i class="fa-solid fa-magnifying-glass"></i></a>
+  <button class="tab-btn" id="mobile-post-btn"><i class="fa-solid fa-square-plus"></i></button>
+  <a href="#/notifications" class="tab-btn" data-route="notifications">
+    <i class="fa-solid fa-bell"></i>
+    <span class="badge hidden" id="notif-badge-mobile">0</span>
+  </a>
+  <a href="#" class="tab-btn" data-route="profile" id="mobile-profile-link"><i class="fa-solid fa-user"></i></a>
+</nav>
+
+<!-- ================= MODALS ================= -->
+
+<!-- Create / Edit Post Modal -->
+<div class="modal-overlay hidden" id="post-modal-overlay">
+  <div class="modal glass-strong">
+    <div class="modal-header">
+      <h3 id="post-modal-title">Create Post</h3>
+      <button class="btn-icon" data-close-modal="post-modal-overlay"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form id="post-form">
+      <input type="hidden" id="post-form-id">
+      <div class="composer-top" style="margin-bottom:8px;">
+        <div id="post-form-avatar"></div>
+        <textarea id="post-form-content" class="post-editor-textarea" placeholder="What's happening?" maxlength="500" rows="5"></textarea>
+      </div>
+      <div class="composer-image-preview hidden" id="post-form-image-preview" style="margin-left:0;">
+        <img id="post-form-image-img" src="" alt="Preview">
+        <button type="button" class="remove-img-btn" id="post-form-remove-image"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="composer-bottom" style="margin-left:0;">
+        <div class="composer-tools">
+          <label class="btn-icon" title="Add image">
+            <i class="fa-solid fa-image"></i>
+            <input type="file" id="post-form-image-input" accept="image/*" class="hidden">
+          </label>
+          <button type="button" class="btn-icon" id="post-form-emoji-btn" title="Emoji"><i class="fa-solid fa-face-smile"></i></button>
+          <div class="emoji-popover glass hidden" id="post-form-emoji-popover"></div>
+        </div>
+        <div class="composer-submit-row">
+          <span class="char-counter" id="post-form-char-counter">0 / 500</span>
+          <button type="submit" class="btn btn-primary btn-sm" id="post-form-submit-btn">Post</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Edit Profile Modal -->
+<div class="modal-overlay hidden" id="edit-profile-modal-overlay">
+  <div class="modal glass-strong">
+    <div class="modal-header">
+      <h3>Edit Profile</h3>
+      <button class="btn-icon" data-close-modal="edit-profile-modal-overlay"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form id="edit-profile-form">
+      <div class="cover-upload-preview" id="edit-cover-preview">
+        <div class="edit-overlay"><i class="fa-solid fa-camera"></i>&nbsp; Change cover</div>
+        <input type="file" id="edit-cover-input" accept="image/*" class="hidden">
+      </div>
+      <div style="margin-top:-58px; margin-bottom:14px; padding-left:20px;">
+        <div class="avatar-upload-preview" id="edit-avatar-preview">
+          <div class="edit-overlay"><i class="fa-solid fa-camera"></i></div>
+          <input type="file" id="edit-avatar-input" accept="image/*" class="hidden">
+        </div>
+      </div>
+
+      <div class="field" id="edit-fullname-field">
+        <label for="edit-fullname">Full Name</label>
+        <input type="text" id="edit-fullname" class="input" maxlength="100">
+        <div class="field-error"></div>
+      </div>
+      <div class="field" id="edit-username-field">
+        <label for="edit-username">Username</label>
+        <input type="text" id="edit-username" class="input" maxlength="30">
+        <div class="field-error"></div>
+      </div>
+      <div class="field" id="edit-bio-field">
+        <label for="edit-bio">Bio</label>
+        <textarea id="edit-bio" class="textarea" maxlength="280" rows="3"></textarea>
+        <span class="char-counter" id="edit-bio-counter">0 / 280</span>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" id="edit-profile-submit-btn">Save Changes</button>
+    </form>
+  </div>
+</div>
+
+<!-- Followers / Following Modal -->
+<div class="modal-overlay hidden" id="follow-list-modal-overlay">
+  <div class="modal glass-strong">
+    <div class="modal-header">
+      <h3 id="follow-list-modal-title">Followers</h3>
+      <button class="btn-icon" data-close-modal="follow-list-modal-overlay"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="follow-list-modal-content"></div>
+  </div>
+</div>
+
+<!-- Image Lightbox -->
+<div class="modal-overlay hidden" id="lightbox-overlay" style="background:rgba(5,8,20,0.9);">
+  <button class="btn-icon" data-close-modal="lightbox-overlay" style="position:absolute; top:20px; right:20px; color:#fff; font-size:1.3rem;"><i class="fa-solid fa-xmark"></i></button>
+  <img id="lightbox-img" src="" alt="Full size" style="max-width:92vw; max-height:90vh; border-radius:12px; object-fit:contain;">
+</div>
+
+<!-- Confirm Dialog (delete post/comment/account) -->
+<div class="modal-overlay hidden" id="confirm-modal-overlay">
+  <div class="modal glass-strong" style="max-width:380px;">
+    <h3 id="confirm-modal-title" style="margin-bottom:10px;">Are you sure?</h3>
+    <p id="confirm-modal-message" style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:22px;"></p>
+    <div style="display:flex; gap:10px;">
+      <button class="btn btn-glass btn-block" data-close-modal="confirm-modal-overlay">Cancel</button>
+      <button class="btn btn-danger btn-block" id="confirm-modal-action-btn">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast-stack"></div>
+
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/feed.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/bookmarks.js"></script>
+<script src="js/search.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
